@@ -211,11 +211,12 @@ async function deleteHotelById(hotelId) {
 app.delete("/hotels/:hotelId", async (req, res) => {
   try {
     const deleteHotel = await deleteHotelById(req.params.hotelId);
-    res.status(200).json({ message: "Hotel data deleted successfully." });
 
     if (!deleteHotel) {
       res.status(404).json({ error: "Hotel not found." });
     }
+
+    res.status(200).json({ message: "Hotel data deleted successfully." });
   } catch (error) {
     res.status(500).json({ error: "Failed to delete a Hotel." });
   }
